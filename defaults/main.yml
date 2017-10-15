@@ -8,3 +8,6 @@ artemis_user: "artemis"
 artemis_group: "artemis"
 
 artemis_home: "/opt"
+
+artemis_java_install: true
+artemis_java_home: ""
