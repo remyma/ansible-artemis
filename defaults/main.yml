@@ -11,3 +11,8 @@ artemis_home: "/opt"
 
 artemis_java_install: true
 artemis_java_home: ""
+
+artemis_brokers:
+  - name: "artemis-broker"
+    user: "admin"
+    password: "admin"

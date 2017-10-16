@@ -1,10 +1,4 @@
 ---
-- name: "os-specific vars"
-  include_vars: "{{ansible_os_family}}.yml"
-
-- include: java.yml
-  when: artemis_java_install
-
 - name: "Add Artemis group"
   group:
     name: "{{ artemis_group }}"
@@ -25,8 +19,8 @@
     owner: "{{ artemis_user }}"
     group: "{{ artemis_group }}"
   with_items:
-  - "{{ artemis_home }}"
-#  - "{{ artemis_log_dir }}"
+    - "{{ artemis_home }}"
+#   - "{{ artemis_log_dir }}"
 
 
 - name: "Download and extract archive"
@@ -43,6 +37,10 @@
     dest: "{{ artemis_home }}/artemis"
     state: link
     owner: "{{ artemis_user }}"
-    group: "{{ artemis_group }}
+    group: "{{ artemis_group }}"
 
-# Create instances :  ./artemis create var/lib/mybroker --user admin --password admin --allow-anonymous | --require-login: is a mandatory property
+- name: "Create brokers"
+  include: broker.yml
+  with_items: "{{ artemis_brokers }}"
+  loop_control:
+    loop_var: broker

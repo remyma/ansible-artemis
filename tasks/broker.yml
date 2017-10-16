@@ -1,0 +1,6 @@
+---
+- name: "Create broker {{ broker.name }}"
+  artemis_create:
+    name: "/var/lib/{{ broker.name }}"
+    user: "{{ broker.user }}"
+    password: "{{ broker.password }}"
