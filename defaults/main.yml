@@ -14,5 +14,25 @@ artemis_java_home: ""
 
 artemis_brokers:
   - name: "artemis-broker"
+    path: "/var/lib"
     user: "admin"
     password: "admin"
+
+artemis_host: "0.0.0.0"
+artemis_port_artemis: 61616
+artemis_port_amqp: 5672
+artemis_port_stomp: 61613
+artemis_port_hornetq: 5445
+artemis_port_mqtt: 1883
+
+artemis_acceptors:
+  - name: "artemis"
+    url: "tcp://{{ artemis_host }}:{{ artemis_port_artemis }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=CORE,AMQP,STOMP,HORNETQ,MQTT,OPENWIRE;useEpoll=true;amqpCredits=1000;amqpLowCredits=300"
+  - name: "amqp"
+    url: "tcp://{{ artemis_host }}:{{ artemis_port_amqp }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=AMQP;useEpoll=true;amqpCredits=1000;amqpMinCredits=300"
+  - name: "stomp"
+    url: "tcp://{{ artemis_host }}:{{ artemis_port_stomp }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=STOMP;useEpoll=true"
+  - name: "hornetq"
+    url: "tcp://{{ artemis_host }}:{{ artemis_port_hornetq }}?protocols=HORNETQ,STOMP;useEpoll=true"
+  - name: "mqtt"
+    url: "tcp://{{ artemis_host }}:{{ artemis_port_mqtt }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=MQTT;useEpoll=true"

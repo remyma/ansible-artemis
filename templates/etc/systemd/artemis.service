@@ -1,0 +1,15 @@
+[Unit]
+Description=Starts and stops {{ broker.name }} instance on this system
+
+[Service]
+Type=forking
+User={{ artemis_user }}
+Group={{ artemis_group }}
+ExecStart={{ broker.path }}/{{ broker.name }}/bin/artemis run
+ExecStop={{ broker.path }}/{{ broker.name }}/bin/artemis stop
+
+# Shutdown delay in seconds, before process is tried to be killed with KILL (if configured)
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

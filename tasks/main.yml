@@ -22,6 +22,9 @@
     - "{{ artemis_home }}"
 #   - "{{ artemis_log_dir }}"
 
+- name: "Check if artemis already installed"
+  stat: path={{ artemis_home }}/apache-artemis-{{ artemis_version }}
+  register: artemis_path
 
 - name: "Download and extract archive"
   unarchive:
@@ -30,6 +33,7 @@
     remote_src: yes
     owner: "{{ artemis_user }}"
     group: "{{ artemis_group }}"
+  when: not artemis_path.stat.exists
 
 - name: "Create link"
   file:
