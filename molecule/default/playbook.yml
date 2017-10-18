@@ -1,12 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  vars:
-    artemis_brokers:
-      - home: var/lib
-        name: mybroker
-        user: admin
-        password: admin
   roles:
     - role: geerlingguy.java
       when: "ansible_os_family == 'RedHat'"

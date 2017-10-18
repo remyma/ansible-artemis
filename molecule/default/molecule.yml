@@ -8,6 +8,9 @@ lint:
 platforms:
   - name: instance
     image: centos:7
+    privileged: True
+    command: '/sbin/init'
+    cap_add: ['SYS_ADMIN', 'SETPCAP']
 provisioner:
   name: ansible
   lint:

@@ -25,7 +25,7 @@ under the License.
    <core xmlns="urn:activemq:core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="urn:activemq:core ">
 
-      <name>{{ broker.host | default(artemis_host) }}</name>
+      <name>{{ _broker.host }}</name>
 
       <persistence-enabled>true</persistence-enabled>
 
@@ -118,7 +118,7 @@ under the License.
          <!-- useEpoll means: it will use Netty epoll if you are on a system (Linux) that supports it -->
          <!-- amqpCredits: The number of credits sent to AMQP producers -->
          <!-- amqpLowCredits: The server will send the # credits specified at amqpCredits at this low mark -->
-         {% for acceptor in (broker.acceptors | default(artemis_acceptors))  %}
+         {% for acceptor in _broker.acceptors  %}
          <acceptor name="{{ acceptor.name }}" uri="{{ acceptor.url }}"/>
          {% endfor %}
       </acceptors>
