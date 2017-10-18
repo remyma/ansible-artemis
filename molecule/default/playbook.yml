@@ -6,4 +6,4 @@
       when: "ansible_os_family == 'RedHat'"
       java_packages:
         - java-1.8.0-openjdk
-    - role: artemis
+    - role: ansible-artemis
