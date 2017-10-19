@@ -1,4 +1,0 @@
-{
-  "tests/test_install.py::test_artemis_running": true, 
-  "tests/test_install.py::test_artemis_running[ansible://instance]": true
-}

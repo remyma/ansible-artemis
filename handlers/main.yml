@@ -1,2 +1,5 @@
 ---
-# handlers file for artemis
+- name: "restart broker"
+  service:
+    name: "{{ _broker.name }}"
+    state: restarted

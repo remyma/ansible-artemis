@@ -9,25 +9,31 @@
       host: "{{ broker.host | default(artemis_host) }}"
       acceptors: "{{ broker.acceptors | default(artemis_acceptors) }}"
 
+- name: "Check if {{ _broker.name }} already created"
+  stat: path={{ _broker.path }}/{{ _broker.name }}
+  register: broker_path
+
 - name: "Create broker {{ _broker.name }}"
   artemis_create:
-    name: "{{ _broker.path }}/{{ _broker.name }}"
+    name: "{{ _broker.name }}"
+    path: "{{ _broker.path }}"
     user: "{{ _broker.user }}"
     password: "{{ _broker.password }}"
+  when: not broker_path.stat.exists
 
 - name: "Update owner / group for broker folder"
   file:
     path: "{{ _broker.path }}/{{ _broker.name }}"
     state: directory
-    mode: 0755
     recurse: true
-    owner: "{{ artemis_user }}"
-    group: "{{ artemis_group }}"
+    owner: "{{ artemis_user.name }}"
+    group: "{{ artemis_user.group }}"
 
 - name: "Configure {{ _broker.name }}"
   template:
     src: "artemis/etc/broker.xml"
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/broker.xml"
+  notify: "restart broker"
 
 - name: "Install broker as service"
   include: service.yml

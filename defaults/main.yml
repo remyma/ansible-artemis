@@ -4,13 +4,18 @@
 artemis_version: "2.3.0"
 artemis_download_url: "https://www.apache.org/dyn/closer.cgi?filename=activemq/activemq-artemis/{{ artemis_version }}/apache-artemis-{{ artemis_version }}-bin.tar.gz&action=download"
 
-artemis_user: "artemis"
-artemis_group: "artemis"
+artemis_group:
+  name: "artemis"
+  gid: 501
+
+artemis_user:
+  name: "artemis"
+  group: "{{ artemis_group.name }}"
+  uid: 501
+  createhome: no
+  system: yes
 
 artemis_home: "/opt"
-
-artemis_java_install: true
-artemis_java_home: ""
 
 artemis_brokers:
   - name: "artemis-broker"

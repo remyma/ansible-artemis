@@ -119,7 +119,7 @@ under the License.
          <!-- amqpCredits: The number of credits sent to AMQP producers -->
          <!-- amqpLowCredits: The server will send the # credits specified at amqpCredits at this low mark -->
          {% for acceptor in _broker.acceptors  %}
-         <acceptor name="{{ acceptor.name }}" uri="{{ acceptor.url }}"/>
+         <acceptor name="{{ acceptor.name }}">{{ acceptor.url }}</acceptor>
          {% endfor %}
       </acceptors>
 

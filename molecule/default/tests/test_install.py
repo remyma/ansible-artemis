@@ -10,4 +10,3 @@ def test_artemis_running(Service):
     artemis = Service("artemis-broker")
     assert artemis.is_enabled
     assert artemis.is_running
-

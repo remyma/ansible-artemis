@@ -1,14 +1,17 @@
 ---
 - name: "Add Artemis group"
   group:
-    name: "{{ artemis_group }}"
+    name: "{{ artemis_user.group }}"
+    gid: "{{ artemis_group.gid }}"
+    state: "present"
 
 - name: "Add Artemis user"
   user:
-    name: "{{ artemis_user }}"
-    group: "{{ artemis_group }}"
+    name: "{{ artemis_user.name }}"
+    group: "{{ artemis_user.group }}"
+    uid: "{{ artemis_user.uid }}"
     createhome: no
-    state: present
+    state: "present"
     system: yes
 
 - name: "Create requires directories"
@@ -16,8 +19,8 @@
     path: "{{ item }}"
     state: directory
     mode: 0755
-    owner: "{{ artemis_user }}"
-    group: "{{ artemis_group }}"
+    owner: "{{ artemis_user.name }}"
+    group: "{{ artemis_user.group }}"
   with_items:
     - "{{ artemis_home }}"
 #   - "{{ artemis_log_dir }}"
@@ -31,8 +34,8 @@
     src: "{{ artemis_download_url }}"
     dest: "{{ artemis_home }}"
     remote_src: yes
-    owner: "{{ artemis_user }}"
-    group: "{{ artemis_group }}"
+    owner: "{{ artemis_user.name }}"
+    group: "{{ artemis_user.group }}"
   when: not artemis_path.stat.exists
 
 - name: "Create link"
@@ -40,8 +43,8 @@
     src: "{{ artemis_home }}/apache-artemis-{{ artemis_version }}"
     dest: "{{ artemis_home }}/artemis"
     state: link
-    owner: "{{ artemis_user }}"
-    group: "{{ artemis_group }}"
+    owner: "{{ artemis_user.name }}"
+    group: "{{ artemis_user.group }}"
 
 - name: "Create brokers"
   include: broker.yml
