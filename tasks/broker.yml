@@ -36,4 +36,4 @@
   notify: "restart broker"
 
 - name: "Install broker as service"
-  include: service.yml
+  include_tasks: service.yml
