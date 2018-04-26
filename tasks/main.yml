@@ -23,31 +23,27 @@
     group: "{{ artemis_user.group }}"
   with_items:
     - "{{ artemis_home }}"
-#   - "{{ artemis_log_dir }}"
-
-- name: "Check if artemis already installed"
-  stat: path={{ artemis_home }}/apache-artemis-{{ artemis_version }}
-  register: artemis_path
+    - "{{ artemis_log_dir | default([])}}"
 
 - name: "Download and extract archive"
   unarchive:
     src: "{{ artemis_download_url }}"
-    dest: "{{ artemis_home }}"
+    dest: "{{ artemis_install_dir }}"
     remote_src: yes
     owner: "{{ artemis_user.name }}"
     group: "{{ artemis_user.group }}"
-  when: not artemis_path.stat.exists
+    creates: "{{ artemis_home }}/bin/artemis"
 
 - name: "Create link"
   file:
-    src: "{{ artemis_home }}/apache-artemis-{{ artemis_version }}"
-    dest: "{{ artemis_home }}/artemis"
+    src: "{{ artemis_home }}"
+    dest: "{{ artemis_install_dir }}/artemis"
     state: link
     owner: "{{ artemis_user.name }}"
     group: "{{ artemis_user.group }}"
 
 - name: "Create brokers"
-  include: broker.yml
+  include_tasks: broker.yml
   with_items: "{{ artemis_brokers }}"
   loop_control:
     loop_var: broker

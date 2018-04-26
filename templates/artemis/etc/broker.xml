@@ -34,7 +34,7 @@ under the License.
            MAPPED: mmap files
            NIO: Plain Java Files
        -->
-      <journal-type>NIO</journal-type>
+      <journal-type>{{ _broker.journal_type }}</journal-type>
 
       <paging-directory>./data/paging</paging-directory>
 
