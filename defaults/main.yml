@@ -31,6 +31,8 @@ artemis_port_stomp: 61613
 artemis_port_hornetq: 5445
 artemis_port_mqtt: 1883
 
+artemis_journal_type: "NIO"
+
 artemis_acceptors:
   - name: "artemis"
     url: "tcp://{{ artemis_host }}:{{ artemis_port_artemis }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=CORE,AMQP,STOMP,HORNETQ,MQTT,OPENWIRE;useEpoll=true;amqpCredits=1000;amqpLowCredits=300"

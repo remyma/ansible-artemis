@@ -7,6 +7,7 @@
       user: "{{ broker.user }}"
       password: "{{ broker.password }}"
       host: "{{ broker.host | default(artemis_host) }}"
+      journal_type: "{{ broker.journal_type | default(artemis_journal_type) }}"
       acceptors: "{{ broker.acceptors | default(artemis_acceptors) }}"
 
 - name: "Check if {{ _broker.name }} already created"
