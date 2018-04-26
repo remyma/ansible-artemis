@@ -16,7 +16,8 @@ Install and configure activemq artemis broker.
 | artemis_download_url | string | | Download Artemis archive url |
 | artemis_group | dictionnary | see defaults| Artemis service group |
 | artemis_user | dictionnary | see defaults | Artemis service user |
-| artemis_home | string | ```/opt``` | Artemis home |
+| artemis_install_dir | string | ```/opt``` | Artemis installation directory |
+| artemis_home | string | ```/{{ artemis_install_dir }}/apache-artemis-{{ artemis_version }}``` | Artemis home directory |
 | artemis_brokers | list | see defaults | List of brokers to install (you can install multiple instances if you want to) |
 
 ### Broker default configuration
