@@ -32,6 +32,7 @@ artemis_port_hornetq: 5445
 artemis_port_mqtt: 1883
 
 artemis_journal_type: "NIO"
+artemis_journal_pool_files: 10
 
 artemis_acceptors:
   - name: "artemis"
