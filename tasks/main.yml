@@ -23,8 +23,7 @@
     group: "{{ artemis_user.group }}"
   with_items:
     - "{{ artemis_home }}"
-#   - "{{ artemis_log_dir }}"
-
+    - "{{ artemis_log_dir | default([])}}"
 
 - name: "Download and extract archive"
   unarchive:
