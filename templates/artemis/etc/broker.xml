@@ -84,7 +84,7 @@ under the License.
        on the current journal configuration.
        That translates as a sync write every 1000000 nanoseconds
       -->
-      <journal-buffer-timeout>1000000</journal-buffer-timeout>
+      <journal-buffer-timeout>{{ _broker.journal_buffer_timeout }}</journal-buffer-timeout>
 
 
       <!-- how often we are looking for how many bytes are being used on the disk in ms -->

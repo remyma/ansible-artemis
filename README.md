@@ -33,6 +33,7 @@ Install and configure activemq artemis broker.
 | artemis_acceptors | list | see defaults | List of artemis acceptors for the broker (amqp, mqtt, ...) |
 | artemis_journal_type | string | NIO | Journal type |
 | artemis_journal_pool_files | string | 10 | Upper threshold of the journal file pool |
+| artemis_journal_buffer_timeouts | dict | {NIO: "3333333" ASYNCIO: "500000"} | Artemis defaults for journal-buffer-timeout, depending on journal-type |
 
 ## Example Playbook
 
