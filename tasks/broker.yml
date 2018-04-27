@@ -9,7 +9,6 @@
       host: "{{ broker.host | default(artemis_host) }}"
       journal_type: "{{ broker.journal_type | default(artemis_journal_type) }}"
       journal_pool_files: "{{ broker.journal_pool_files | default(artemis_journal_pool_files) }}"
-
       acceptors: "{{ broker.acceptors | default(artemis_acceptors) }}"
 
 - name: "Check if {{ _broker.name }} already created"
