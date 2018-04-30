@@ -8,6 +8,8 @@
       password: "{{ broker.password }}"
       host: "{{ broker.host | default(artemis_host) }}"
       acceptors: "{{ broker.acceptors | default(artemis_acceptors) }}"
+      web_port: "{{ broker.web_port | default(artemis_web_port) }}"
+      web_host: "{{ broker.web_host | default(artemis_web_host) }}"
 
 - name: "Check if {{ _broker.name }} already created"
   stat: path={{ _broker.path }}/{{ _broker.name }}
@@ -29,11 +31,8 @@
     owner: "{{ artemis_user.name }}"
     group: "{{ artemis_user.group }}"
 
-- name: "Configure {{ _broker.name }}"
-  template:
-    src: "artemis/etc/broker.xml"
-    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/broker.xml"
-  notify: "restart broker"
+- name: "Configure instance"
+  include: configure.yml
 
-- name: "Install broker as service"
+- name: "Install instance as service"
   include: service.yml

@@ -1,0 +1,12 @@
+---
+- name: "Configure {{ _broker.name }} broker.xml"
+  template:
+    src: "artemis/etc/broker.xml"
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/broker.xml"
+  notify: "restart broker"
+
+- name: "Configure {{ _broker.name }} bootstrap.xml"
+  template:
+    src: "artemis/etc/bootstrap.xml"
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/bootstrap.xml"
+  notify: "restart broker"

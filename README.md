@@ -19,7 +19,7 @@ Install and configure activemq artemis broker.
 | artemis_home | string | ```/opt``` | Artemis home |
 | artemis_brokers | list | see defaults | List of brokers to install (you can install multiple instances if you want to) |
 
-### Broker default configuration
+### Broker instance default configuration
 
 | Variable     | type | Default       | Description    |
 | ------------ | ---- |------------- | -------------- |
@@ -30,15 +30,26 @@ Install and configure activemq artemis broker.
 | artemis_port_hornetq | number | 5445 | HornetQ port |
 | artemis_port_mqtt | number | 1883 | Mqtt port |
 | artemis_acceptors | list | see defaults | List of artemis acceptors for the broker (amqp, mqtt, ...) |
-
+| artemis_web_port | number | 8161 | http web port (used for jolokia, console ui) |
+| artemis_web_host | string | localhost | http web port (used for jolokia, console ui) |
 
 ## Example Playbook
 
 ### Basic install
 
+```yaml
     - hosts: artemis-servers
       roles:
         - { role: artemis }
+```
+
+### Multi-instances
+
+```yaml
+    - hosts: artemis-servers
+      roles:
+        - { role: artemis }
+```
 
 ## License
 

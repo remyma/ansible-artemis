@@ -41,3 +41,6 @@ artemis_acceptors:
     url: "tcp://{{ artemis_host }}:{{ artemis_port_hornetq }}?protocols=HORNETQ,STOMP;useEpoll=true"
   - name: "mqtt"
     url: "tcp://{{ artemis_host }}:{{ artemis_port_mqtt }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=MQTT;useEpoll=true"
+
+artemis_web_port: 8161
+artemis_web_host: localhost

@@ -47,7 +47,7 @@
     group: "{{ artemis_user.group }}"
 
 - name: "Create brokers"
-  include: broker.yml
+  include: instance/instance.yml
   with_items: "{{ artemis_brokers }}"
   loop_control:
     loop_var: broker
