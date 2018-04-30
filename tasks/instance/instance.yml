@@ -39,4 +39,3 @@
 
 - name: "Install broker as service"
   include_tasks: service.yml
-
