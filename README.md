@@ -1,4 +1,5 @@
 # Ansible Activemq Artemis
+[![Build Status](https://travis-ci.org/remyma/ansible-artemis.svg?branch=master)](https://travis-ci.org/remyma/ansible-artemis)
 
 Install and configure activemq artemis broker.
 
