@@ -7,6 +7,9 @@
       user: "{{ broker.user }}"
       password: "{{ broker.password }}"
       host: "{{ broker.host | default(artemis_host) }}"
+      journal_type: "{{ broker.journal_type | default(artemis_journal_type) }}"
+      journal_pool_files: "{{ broker.journal_pool_files | default(artemis_journal_pool_files) }}"
+      journal_buffer_timeout: "{{ artemis_journal_buffer_timeout }}"
       acceptors: "{{ broker.acceptors | default(artemis_acceptors) }}"
       web_port: "{{ broker.web_port | default(artemis_web_port) }}"
       web_host: "{{ broker.web_host | default(artemis_web_host) }}"
@@ -34,5 +37,6 @@
 - name: "Configure instance"
   include: configure.yml
 
-- name: "Install instance as service"
-  include: service.yml
+- name: "Install broker as service"
+  include_tasks: service.yml
+

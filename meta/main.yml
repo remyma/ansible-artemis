@@ -3,7 +3,7 @@ galaxy_info:
   author: Matthieu Rémy
   description: Install elasticstack prerequisites (repo, java, ...)
   license: "license (BSD, MIT)"
-  min_ansible_version: 2.2.0
+  min_ansible_version: 2.4.0
 
   platforms:
     - name: EL
