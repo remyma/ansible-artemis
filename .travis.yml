@@ -14,8 +14,8 @@ install:
   - pip install ansible==2.4.0.0
   - pip install molecule
   - pip install testinfra
-  - pip install docker
+  - pip install docker-py
 script:
-  - molecule test
+  - molecule --debug test
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
