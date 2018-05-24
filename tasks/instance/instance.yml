@@ -2,6 +2,7 @@
 - name: "Init broker with default values."
   set_fact:
     _broker:
+      artemis_home: "{{ broker.artemis_home | default(artemis_home_symlink) }}"
       name: "{{ broker.name }}"
       path: "{{ broker.path }}"
       user: "{{ broker.user }}"

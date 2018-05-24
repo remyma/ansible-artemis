@@ -11,6 +11,12 @@
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/bootstrap.xml"
   notify: "restart broker"
 
+- name: "Ensure ARTEMIS_HOME is correct in artemis.profile"
+  lineinfile:
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/artemis.profile"
+    regexp: "^ARTEMIS_HOME"
+    line: "ARTEMIS_HOME='{{ _broker.artemis_home }}'"
+
 - name: "Configure {{ _broker.name }} logging.properties"
   template:
     src: "artemis/etc/logging.properties"
