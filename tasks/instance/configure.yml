@@ -10,3 +10,10 @@
     src: "artemis/etc/bootstrap.xml"
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/bootstrap.xml"
   notify: "restart broker"
+
+- name: "Ensure ARTEMIS_HOME is correct in artemis.profile"
+  lineinfile:
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/artemis.profile"
+    regexp: "^ARTEMIS_HOME"
+    line: "ARTEMIS_HOME='{{ artemis_home_symlink }}'"
+  notify: "restart broker"

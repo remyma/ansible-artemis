@@ -38,7 +38,7 @@
 - name: "Create link"
   file:
     src: "{{ artemis_home }}"
-    dest: "{{ artemis_install_dir }}/artemis"
+    dest: "{{ artemis_home_symlink }}"
     state: link
     owner: "{{ artemis_user.name }}"
     group: "{{ artemis_user.group }}"
