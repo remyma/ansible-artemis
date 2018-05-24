@@ -15,5 +15,5 @@
   lineinfile:
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/artemis.profile"
     regexp: "^ARTEMIS_HOME"
-    line: "ARTEMIS_HOME='{{ artemis_home_symlink }}'"
+    line: "ARTEMIS_HOME='{{ _broker.artemis_home }}'"
   notify: "restart broker"

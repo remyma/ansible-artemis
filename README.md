@@ -25,6 +25,7 @@ Install and configure activemq artemis broker.
 
 | Variable     | type | Default       | Description    |
 | ------------ | ---- |------------- | -------------- |
+| artemis_home | string | ```/opt/artemis``` (symlink to system current) | ARTEMIS_HOME in etc/artemis.profile |
 | artemis_host | string | ```0.0.0.0``` | Artemis host |
 | artemis_port_artemis | number | 61616 | Tcp port |
 | artemis_port_amqp | number | 5672| Amqp port |
