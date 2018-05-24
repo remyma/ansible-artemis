@@ -10,3 +10,9 @@
     src: "artemis/etc/bootstrap.xml"
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/bootstrap.xml"
   notify: "restart broker"
+
+- name: "Configure {{ _broker.name }} logging.properties"
+  template:
+    src: "artemis/etc/logging.properties"
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/logging.properties"
+  notify: "restart broker"
