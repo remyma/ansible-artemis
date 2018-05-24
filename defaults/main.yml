@@ -53,3 +53,5 @@ artemis_acceptors:
 
 artemis_web_port: 8161
 artemis_web_host: localhost
+
+artemis_log_file: "${artemis.instance}/log/artemis.log"

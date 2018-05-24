@@ -16,4 +16,9 @@
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/artemis.profile"
     regexp: "^ARTEMIS_HOME"
     line: "ARTEMIS_HOME='{{ _broker.artemis_home }}'"
+
+- name: "Configure {{ _broker.name }} logging.properties"
+  template:
+    src: "artemis/etc/logging.properties"
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/logging.properties"
   notify: "restart broker"
