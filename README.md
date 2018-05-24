@@ -13,7 +13,7 @@ Install and configure activemq artemis broker.
 
 | Variable     | type | Default       | Description    |
 | ------------ | ---- |------------- | -------------- |
-| artemis_version | string | ```2.3.0``` | Artemis version |
+| artemis_version | string | ```2.6.0``` | Artemis version |
 | artemis_download_url | string | | Download Artemis archive url |
 | artemis_group | dictionnary | see defaults| Artemis service group |
 | artemis_user | dictionnary | see defaults | Artemis service user |
