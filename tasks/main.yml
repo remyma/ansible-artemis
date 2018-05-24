@@ -33,6 +33,7 @@
     owner: "{{ artemis_user.name }}"
     group: "{{ artemis_user.group }}"
     creates: "{{ artemis_home }}/bin/artemis"
+  notify: restart broker
 
 - name: "Create link"
   file:
