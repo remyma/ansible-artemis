@@ -23,9 +23,8 @@
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/logging.properties"
   notify: "restart broker"
 
-- name: "Congigure jolokia-access.xml CORS allow-origin policy"
-  lineinfile:
+- name: "Configure {{ _broker.name }} jolokia-access.xml"
+  template:
+    src: "artemis/etc/jolokia-access.xml"
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/jolokia-access.xml"
-    regexp: "^(\\s*)<allow-origin>"
-    line: "\\1<allow-origin>{{ _broker.jolokia_cors }}</allow-origin>"
-    backrefs: yes
+  notify: "restart broker"

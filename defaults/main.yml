@@ -56,4 +56,5 @@ artemis_web_host: localhost
 
 artemis_log_file: "${artemis.instance}/log/artemis.log"
 
-jolokia_cors: "*://localhost*"
+jolokia_cors:
+  - "*://localhost*"
