@@ -1,7 +1,7 @@
 ---
 # defaults file for artemis
 
-artemis_version: "2.6.0"
+artemis_version: "2.6.2"
 artemis_download_url: "https://www.apache.org/dyn/closer.cgi?filename=activemq/activemq-artemis/{{ artemis_version }}/apache-artemis-{{ artemis_version }}-bin.tar.gz&action=download"
 
 artemis_group:
