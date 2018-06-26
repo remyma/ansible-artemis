@@ -14,6 +14,7 @@
       acceptors: "{{ broker.acceptors | default(artemis_acceptors) }}"
       web_port: "{{ broker.web_port | default(artemis_web_port) }}"
       web_host: "{{ broker.web_host | default(artemis_web_host) }}"
+      jolokia_cors: "{{ broker.jolokia_cors | default(jolokia_cors) }}"
       log_file: "{{ broker.log_file | default(artemis_log_file) }}"
 
 - name: "Check if {{ _broker.name }} already created"

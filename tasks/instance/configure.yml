@@ -22,3 +22,9 @@
     src: "artemis/etc/logging.properties"
     dest: "{{ _broker.path }}/{{ _broker.name }}/etc/logging.properties"
   notify: "restart broker"
+
+- name: "Configure {{ _broker.name }} jolokia-access.xml"
+  template:
+    src: "artemis/etc/jolokia-access.xml"
+    dest: "{{ _broker.path }}/{{ _broker.name }}/etc/jolokia-access.xml"
+  notify: "restart broker"
