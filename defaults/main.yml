@@ -43,7 +43,7 @@ artemis_acceptors:
   - name: "artemis"
     url: "tcp://{{ artemis_host }}:{{ artemis_port_artemis }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=CORE,AMQP,STOMP,HORNETQ,MQTT,OPENWIRE;useEpoll=true;amqpCredits=1000;amqpLowCredits=300"
   - name: "amqp"
-    url: "tcp://{{ artemis_host }}:{{ artemis_port_amqp }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=AMQP;useEpoll=true;amqpCredits=1000;amqpMinCredits=300"
+    url: "tcp://{{ artemis_host }}:{{ artemis_port_amqp }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=AMQP;useEpoll=true;amqpCredits=1000;amqpLowCredits=300"
   - name: "stomp"
     url: "tcp://{{ artemis_host }}:{{ artemis_port_stomp }}?tcpSendBufferSize=1048576;tcpReceiveBufferSize=1048576;protocols=STOMP;useEpoll=true"
   - name: "hornetq"
