@@ -11,6 +11,13 @@ platforms:
     privileged: True
     command: '/sbin/init'
     cap_add: ['SYS_ADMIN', 'SETPCAP']
+  - name: instance
+    image: solita/ubuntu-systemd:latest
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
   lint:
