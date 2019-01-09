@@ -6,16 +6,20 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: redhat-family-instance
     image: centos:7
     privileged: True
     command: '/sbin/init'
-    cap_add: ['SYS_ADMIN', 'SETPCAP']
-  - name: instance
+    cap_add:
+      - SYS_ADMIN
+      - SETPCAP
+  - name: debian-family-instance
     image: solita/ubuntu-systemd:latest
-    command: /sbin/init
+    privileged: True
+    command: '/sbin/init'
     capabilities:
       - SYS_ADMIN
+      - SETPCAP
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
