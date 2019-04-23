@@ -16,6 +16,7 @@ artemis_user:
   system: yes
 
 artemis_install_dir: "/opt"
+artemis_log_dir: []
 artemis_home: "{{ artemis_install_dir }}/apache-artemis-{{ artemis_version }}"
 artemis_home_symlink: "{{ artemis_install_dir }}/artemis"
 
