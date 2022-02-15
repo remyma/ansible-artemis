@@ -59,3 +59,5 @@ artemis_log_file: "${artemis.instance}/log/artemis.log"
 
 jolokia_cors:
   - "*://localhost*"
+
+artemis_host_has_internet: true
