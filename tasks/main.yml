@@ -25,15 +25,44 @@
     - "{{ artemis_home }}"
     - "{{ artemis_log_dir }}"
 
+- name: Download on Ansible host
+  block:
+    - name: Download archive
+      get_url:
+        url: "{{ artemis_download_url }}"
+        dest: /tmp/
+        mode: 0544
+      delegate_to: localhost
+      vars:
+        connection: local
+        run_once: true
+      register: download
+
+    - name: Exctract archive on target host
+      unarchive:
+        src: "{{ download.dest }}"
+        dest: "{{ artemis_install_dir }}"
+        remote_src: false
+        owner: "{{ artemis_user.name }}"
+        group: "{{ artemis_user.group }}"
+        creates: "{{ artemis_home }}/bin/artemis"
+      notify: restart broker
+
+  when: not artemis_host_has_internet
+
 - name: "Download and extract archive"
-  unarchive:
-    src: "{{ artemis_download_url }}"
-    dest: "{{ artemis_install_dir }}"
-    remote_src: yes
-    owner: "{{ artemis_user.name }}"
-    group: "{{ artemis_user.group }}"
-    creates: "{{ artemis_home }}/bin/artemis"
-  notify: restart broker
+  block:
+    - name: Exctract archive
+      unarchive:
+        src: "{{ artemis_download_url }}"
+        dest: "{{ artemis_install_dir }}"
+        remote_src: yes
+        owner: "{{ artemis_user.name }}"
+        group: "{{ artemis_user.group }}"
+        creates: "{{ artemis_home }}/bin/artemis"
+      notify: restart broker
+
+  when: artemis_host_has_internet
 
 - name: "Create link"
   file:
